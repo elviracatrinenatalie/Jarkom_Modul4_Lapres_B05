@@ -86,10 +86,10 @@ Metode ini dikerjakan dengan cara menggabungkan subnet-subnet paling bawah dalam
 
 - Sehingga di dapatkan pohon pembagian IP berdasarkan penggabungan subnet yang telah dilakukan:
 <img src="https://user-images.githubusercontent.com/61219556/102016385-3beff300-3d93-11eb-8e16-7c2cd65ba80b.png" width="500" height="auto">
+<img src="https://user-images.githubusercontent.com/61219556/102017553-4497f780-3d9a-11eb-8f39-436bc335dc45.PNG" width="500" height="auto">
 
 - Kemudian NID dibagikan pada setiap subnet pada topologi seperti berikut : 
 <img src="https://user-images.githubusercontent.com/61219556/102016443-a30da780-3d93-11eb-97d0-d9c06a1b1f9e.jpg" width="500" height="auto"> 
-<img src="https://user-images.githubusercontent.com/61219556/102017553-4497f780-3d9a-11eb-8f39-436bc335dc45.PNG" width="500" height="auto">
 
 - Membuat file `topologi.sh` pada putty dengan konfigurasi seperti berikut : 
 
