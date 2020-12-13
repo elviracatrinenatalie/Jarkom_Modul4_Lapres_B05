@@ -13,8 +13,9 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 - Subnet besar yang dibentuk memiliki **NID 192.168.0.0** dengan netmask **/19**. Pembagian IP berdasarkan NID dan netmask dihitung menggunakan pohon pada gambar di bawah:
 <img src="https://user-images.githubusercontent.com/61219556/102015576-0f39dc80-3d8f-11eb-80be-d5b2d43a11e8.jpg" width="500" height="auto">
 - Kemudian NID dibagikan pada setiap subnet pada topologi sesuai dengan tabel diatas.
-- Untuk melakukan subneting pada cpt, bisa diliat di **Modul 4 : SUBNETING & ROUTING**<br>
+- Untuk melakukan subneting pada cpt, bisa diliat di **SUBNETING & ROUTING** . 
 - Untuk melakukan routing pada cpt dapat dilakukan pada menu `Config > Routing > Static` pada device Router. Lalu, diberikan static route pada semua router yang ada dengan route sebagai berikut :
+
 **SURABAYA**
 ```
 192.168.8.0/22 via 192.168.0.2
@@ -29,6 +30,7 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 192.168.16.0/22 via 192.168.0.10
 10.151.83.52/30 via 192.168.0.10
 ```
+
 **BATU**
 ```
 0.0.0.0/0 via 192.168.0.9
@@ -37,26 +39,31 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 192.168.16.0/24 via 192.168.0.14
 10.151.83.52/30 via 192.168.0.14
 ```
+
 **PASURUAN**
 ```
 0.0.0.0/0 via 192.168.0.1
 192.168.0.128/25 via 192.168.0.6
 192.168.24.0/21 via 192.168.0.6
 ```
+
 **KEDIRI**
 ```
 0.0.0.0/0 via 192.168.0.13
 192.168.16.0/22 via 192.168.1.2
 ```
+
 **PROBOLINGGO**
 ```
 0.0.0.0/0 via 192.168.0.5
 ```
+
 **MADIUN**
 ```
 0.0.0.0/0 via 192.168.2.1
 ```
-BLITAR
+
+**BLITAR**
 ```
 0.0.0.0/0 via 192.168.1.1
 ```
