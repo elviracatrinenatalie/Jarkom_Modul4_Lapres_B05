@@ -119,6 +119,7 @@ xterm -T TULUNGAGUNG -e linux ubd0=TULUNGAGUNG,jarkom umid=TULUNGAGUNG eth0=daem
 xterm -T LUMAJANG -e linux ubd0=LUMAJANG,jarkom umid=LUMAJANG eth0=daemon,,,switch17 mem=64M &
 ```
 - Pada UML yang berperan sebagai router, melakukan uncomment pada perintah `net.ipv4.ip_forward=1` agar dapat meneruskan route yaitu dengan cara mengetikkan `nano /etc/sysctl.conf`. Lalu, ketik `sysctl -p.` untuk mengaktifkan perubahan baru. Kemudian, atur interface pada setiap UML dengan menjalankan perintah `nano /etc/network/interfaces` kemudian melakukan `restart networking restart`.
+
 - Berikut setting file `/etc/network/interfaces` untuk setiap UML:
 **SURABAYA (Router)**
 ```
@@ -403,7 +404,7 @@ iface eth0 inet static
 address 192.168.0.2
 netmask 255.255.252.0
 gateway 192.168.0.1
-````
+```
 - Agar UML dapat mengakses internet, pada **SURABAYA** diketikkan perintah `iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16`.
 
 [ PENGERJAAN UNTUK UML HANYA SAMPAI SINI, UNTUK ROUTING UP ]
