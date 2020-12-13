@@ -13,6 +13,7 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 
 - Subnet besar yang dibentuk memiliki **NID 192.168.0.0** dengan netmask **/19**. Pembagian IP berdasarkan NID dan netmask dihitung menggunakan pohon pada gambar di bawah:
 <img src="https://user-images.githubusercontent.com/61219556/102015576-0f39dc80-3d8f-11eb-80be-d5b2d43a11e8.jpg" width="500" height="auto">
+<img src="https://user-images.githubusercontent.com/61219556/102017555-45c92480-3d9a-11eb-9459-47d9e8abf869.PNG" width="500" height="auto">
 
 - Kemudian NID dibagikan pada setiap subnet pada topologi sesuai dengan tabel diatas.
 
@@ -88,6 +89,7 @@ Metode ini dikerjakan dengan cara menggabungkan subnet-subnet paling bawah dalam
 
 - Kemudian NID dibagikan pada setiap subnet pada topologi seperti berikut : 
 <img src="https://user-images.githubusercontent.com/61219556/102016443-a30da780-3d93-11eb-97d0-d9c06a1b1f9e.jpg" width="500" height="auto"> 
+<img src="https://user-images.githubusercontent.com/61219556/102017553-4497f780-3d9a-11eb-8f39-436bc335dc45.PNG" width="500" height="auto">
 
 - Membuat file `topologi.sh` pada putty dengan konfigurasi seperti berikut : 
 
