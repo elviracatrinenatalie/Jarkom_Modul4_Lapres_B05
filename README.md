@@ -13,7 +13,8 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 - Subnet besar yang dibentuk memiliki **NID 192.168.0.0** dengan netmask **/19**. Pembagian IP berdasarkan NID dan netmask dihitung menggunakan pohon pada gambar di bawah:
 <img src="https://user-images.githubusercontent.com/61219556/102015576-0f39dc80-3d8f-11eb-80be-d5b2d43a11e8.jpg" width="500" height="auto">
 - Kemudian NID dibagikan pada setiap subnet pada topologi sesuai dengan tabel diatas.
-- Untuk melakukan subneting pada cpt, bisa diliat di **SUBNETING & ROUTING** . 
+- Untuk melakukan subneting pada cpt, bisa diliat di **Modul $ : SUBNETING & ROUTING**
+
 - Untuk melakukan routing pada cpt dapat dilakukan pada menu `Config > Routing > Static` pada device Router. Lalu, diberikan static route pada semua router yang ada dengan route sebagai berikut :
 
 **SURABAYA**
@@ -82,6 +83,7 @@ Metode ini dikerjakan dengan cara menggabungkan subnet-subnet paling bawah dalam
 - Kemudian NID dibagikan pada setiap subnet pada topologi seperti berikut : 
 <img src="https://user-images.githubusercontent.com/61219556/102016443-a30da780-3d93-11eb-97d0-d9c06a1b1f9e.jpg" width="500" height="auto"> 
 - Membuat file `topologi.sh` pada putty dengan konfigurasi seperti berikut : 
+
 ```
 Switch
 uml_switch -unix switch1 > /dev/null < /dev/null &
@@ -125,9 +127,11 @@ xterm -T NGANJUK -e linux ubd0=NGANJUK,jarkom umid=NGANJUK eth0=daemon,,,switch2
 xterm -T TULUNGAGUNG -e linux ubd0=TULUNGAGUNG,jarkom umid=TULUNGAGUNG eth0=daemon,,,switch20 mem=64M &
 xterm -T LUMAJANG -e linux ubd0=LUMAJANG,jarkom umid=LUMAJANG eth0=daemon,,,switch17 mem=64M &
 ```
+
 - Pada UML yang berperan sebagai router, melakukan uncomment pada perintah `net.ipv4.ip_forward=1` agar dapat meneruskan route yaitu dengan cara mengetikkan `nano /etc/sysctl.conf`. Lalu, ketik `sysctl -p.` untuk mengaktifkan perubahan baru. Kemudian, atur interface pada setiap UML dengan menjalankan perintah `nano /etc/network/interfaces` kemudian melakukan `restart networking restart`.
 
 - Berikut setting file `/etc/network/interfaces` untuk setiap UML:
+
 **SURABAYA (Router)**
 ```
 auto lo
@@ -159,6 +163,7 @@ iface eth4 inet static
 address 10.151.83.49
 netmask 255.255.255.252
 ```
+
 **PASURUAN (Router)**
 ```
 auto lo
@@ -180,6 +185,7 @@ iface eth2 inet static
 address 192.168.160.1
 netmask 255.255.252.0
 ```
+
 **MOJOKERTO (Server)**
 ```
 auto lo
@@ -191,6 +197,7 @@ address 10.151.83.50
 netmask 255.255.255.252
 gateway 10.151.83.49
 ```
+
 **SAMPANG (Client)**
 ```
 auto lo
@@ -202,6 +209,7 @@ address 192.168.64.2
 netmask 255.255.252.0
 gateway 192.168.64.1
 ```
+
 **PROBOLINGGO (Router)**
 ```
 auto lo
@@ -223,6 +231,7 @@ iface eth2 inet static
 address 192.168.128.1
 netmask 255.255.248.0
 ```
+
 **SIDOARJO (Client)**
 ```
 auto lo
@@ -234,6 +243,7 @@ address 192.168.160.2
 netmask 255.255.252.0
 gateway 192.168.160.1
 ```
+
 **BANYUWANGI (Client)**
 ```
 auto lo
@@ -245,6 +255,7 @@ address 192.168.128.3
 netmask 255.255.248.0
 gateway 192.168.128.1
 ```
+
 **JEMBER (Client)**
 ```
 auto lo
@@ -256,6 +267,7 @@ address 192.168.128.2
 netmask 255.255.248.0
 gateway 192.168.128.1
 ```
+
 **BONDOWOSO (Client)**
 ```
 auto lo
@@ -267,6 +279,7 @@ address 192.168.136.2
 netmask 255.255.255.128
 gateway 192.168.136.1
 ```
+
 **BATU (Rouoter)**
 ```
 auto lo
@@ -293,6 +306,7 @@ iface eth3 inet static
 address 192.168.16.1
 netmask 255.255.254.0
 ```
+
 **KEDIRI (Router)**
 ```
 auto lo
@@ -314,6 +328,7 @@ iface eth2 inet static
 address 10.151.83.53
 netmask 255.255.255.252
 ```
+
 #### JOMBANG (Client)
 ```
 auto lo
@@ -325,6 +340,7 @@ address 192.168.16.3
 netmask 255.255.254.0
 gateway 192.168.16.1
 ```
+
 **MADIUN (Router)**
 ```
 auto lo
@@ -341,6 +357,7 @@ iface eth1 inet static
 address 192.168.18.1
 netmask 255.255.255.240
 ```
+
 **BOJONEGORO (Client)**
 ```
 auto lo
@@ -352,6 +369,7 @@ address 192.168.18.2
 netmask 255.255.255.240
 gateway 192.168.18.1
 ```
+
 **NGANJUK (Client)**
 ```
 auto lo
@@ -363,6 +381,7 @@ address 192.168.20.2
 netmask 255.255.252.0
 gateway 192.168.20.1
 ```
+
 **MALANG (Server)**
 ```
 auto lo
@@ -374,6 +393,7 @@ address 10.151.83.54
 netmask 255.255.255.252
 gateway 10.151.83.53
 ```
+
 **BLITAR (Router)**
 ```
 auto lo
@@ -390,6 +410,7 @@ iface eth1 inet static
 address 192.168.0.1
 netmask 255.255.252.0
 ```
+
 **LUMAJANG (Client)**
 ```
 auto lo
@@ -401,6 +422,7 @@ address 192.168.4.3
 netmask 255.255.255.0
 gateway 192.168.4.1
 ```
+
 **TULUNGAGUNG (Client)**
 ```
 auto lo
@@ -412,6 +434,7 @@ address 192.168.0.2
 netmask 255.255.252.0
 gateway 192.168.0.1
 ```
+
 - Agar UML dapat mengakses internet, pada **SURABAYA** diketikkan perintah `iptables –t nat –A POSTROUTING –o eth0 –j MASQUERADE –s 192.168.0.0/16`.
 
 [ PENGERJAAN UNTUK UML HANYA SAMPAI SINI, UNTUK ROUTING UP ]
