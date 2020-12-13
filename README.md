@@ -15,7 +15,7 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 - Kemudian NID dibagikan pada setiap subnet pada topologi sesuai dengan tabel diatas.
 - Untuk melakukan subneting pada cpt, bisa diliat di **Modul 4 : SUBNETING & ROUTING**.
 - Untuk melakukan routing pada cpt dapat dilakukan pada menu `Config > Routing > Static` pada device Router. Lalu, diberikan static route pada semua router yang ada dengan route sebagai berikut :
-#### SURABAYA
+**SURABAYA**
 ```
 192.168.8.0/22 via 192.168.0.2
 192.168.0.4/30 via 192.168.0.2
@@ -29,7 +29,7 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 192.168.16.0/22 via 192.168.0.10
 10.151.83.52/30 via 192.168.0.10
 ```
-#### BATU
+**BATU**
 ```
 0.0.0.0/0 via 192.168.0.9
 192.168.0.16/28 via 192.168.2.2
@@ -37,26 +37,26 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 192.168.16.0/24 via 192.168.0.14
 10.151.83.52/30 via 192.168.0.14
 ```
-#### PASURUAN
+**PASURUAN**
 ```
 0.0.0.0/0 via 192.168.0.1
 192.168.0.128/25 via 192.168.0.6
 192.168.24.0/21 via 192.168.0.6
 ```
-#### KEDIRI
+**KEDIRI**
 ```
 0.0.0.0/0 via 192.168.0.13
 192.168.16.0/22 via 192.168.1.2
 ```
-#### PROBOLINGGO
+**PROBOLINGGO**
 ```
 0.0.0.0/0 via 192.168.0.5
 ```
-#### MADIUN
+**MADIUN**
 ```
 0.0.0.0/0 via 192.168.2.1
 ```
-#### BLITAR
+**BLITAR**
 ```
 0.0.0.0/0 via 192.168.1.1
 ```
@@ -76,7 +76,7 @@ Metode ini dikerjakan dengan cara menggabungkan subnet-subnet paling bawah dalam
 <img src="https://user-images.githubusercontent.com/61219556/102016443-a30da780-3d93-11eb-97d0-d9c06a1b1f9e.jpg" width="500" height="auto"> 
 - Membuat file `topologi.sh` pada putty dengan konfigurasi seperti berikut : 
 ```
-# Switch
+Switch
 uml_switch -unix switch1 > /dev/null < /dev/null &
 uml_switch -unix switch2 > /dev/null < /dev/null &
 uml_switch -unix switch3 > /dev/null < /dev/null &
@@ -93,7 +93,7 @@ uml_switch -unix switch21 > /dev/null < /dev/null &
 uml_switch -unix switch22 > /dev/null < /dev/null &
 uml_switch -unix switch25 > /dev/null < /dev/null &
 
-# Router
+Router
 xterm -T SURABAYA -e linux ubd0=SURABAYA,jarkom umid=SURABAYA eth0=tuntap,,,10.151.74.25 eth1=daemon,,,switch1 eth2=daemon,,,switch2 eth3=daemon,,,switch4 eth4=daemon,,,switch13 mem=64M &
 xterm -T PASURUAN -e linux ubd0=PASURUAN,jarkom umid=PASURUAN eth0=daemon,,,switch2 eth1=daemon,,,switch3 eth2=daemon,,,switch19 mem=64M &
 xterm -T PROBOLINGGO -e linux ubd0=PROBOLINGGO,jarkom umid=PROBOLINGGO eth0=daemon,,,switch3 eth1=daemon,,,switch15 eth2=daemon,,,switch16 mem=64M &
@@ -102,11 +102,11 @@ xterm -T MADIUN -e linux ubd0=MADIUN,jarkom umid=MADIUN eth0=daemon,,,switch22 e
 xterm -T KEDIRI -e linux ubd0=KEDIRI,jarkom umid=KEDIRI eth0=daemon,,,switch5 eth1=daemon,,,switch17 eth2=daemon,,,switch18 mem=64M &
 xterm -T BLITAR -e linux ubd0=BLITAR,jarkom umid=BLITAR eth0=daemon,,,switch17 eth1=daemon,,,switch20 mem=64M &
 
-# Server
+Server
 xterm -T MALANG -e linux ubd0=MALANG,jarkom umid=MALANG eth0=daemon,,,switch18 mem=64M &
 xterm -T MOJOKERTO -e linux ubd0=MOJOKERTO,jarkom umid=MOJOKERTO eth0=daemon,,,switch13 mem=64M &
 
-# Klien
+Klien
 xterm -T SAMPANG -e linux ubd0=SAMPANG,jarkom umid=SAMPANG eth0=daemon,,,switch1 mem=64M &
 xterm -T SIDOARJO -e linux ubd0=SIDOARJO,jarkom umid=SIDOARJO eth0=daemon,,,switch19 mem=64M &
 xterm -T BANYUWANGI -e linux ubd0=BANYUWANGI,jarkom umid=BANYUWANGI eth0=daemon,,,switch16 mem=64M &
@@ -120,7 +120,7 @@ xterm -T LUMAJANG -e linux ubd0=LUMAJANG,jarkom umid=LUMAJANG eth0=daemon,,,swit
 ```
 - Pada UML yang berperan sebagai router, melakukan uncomment pada perintah `net.ipv4.ip_forward=1` agar dapat meneruskan route yaitu dengan cara mengetikkan `nano /etc/sysctl.conf`. Lalu, ketik `sysctl -p.` untuk mengaktifkan perubahan baru. Kemudian, atur interface pada setiap UML dengan menjalankan perintah `nano /etc/network/interfaces` kemudian melakukan `restart networking restart`.
 - Berikut setting file `/etc/network/interfaces` untuk setiap UML:
-#### SURABAYA (Router)
+**SURABAYA (Router)**
 ```
 auto lo
 iface lo inet loopback
@@ -151,7 +151,7 @@ iface eth4 inet static
 address 10.151.83.49
 netmask 255.255.255.252
 ```
-#### PASURUAN (Router)
+**PASURUAN (Router)**
 ```
 auto lo
 iface lo inet loopback
@@ -172,7 +172,7 @@ iface eth2 inet static
 address 192.168.160.1
 netmask 255.255.252.0
 ```
-#### MOJOKERTO (Server)
+**MOJOKERTO (Server)**
 ```
 auto lo
 iface lo inet loopback
@@ -183,7 +183,7 @@ address 10.151.83.50
 netmask 255.255.255.252
 gateway 10.151.83.49
 ```
-#### SAMPANG (Client)
+**SAMPANG (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -194,7 +194,7 @@ address 192.168.64.2
 netmask 255.255.252.0
 gateway 192.168.64.1
 ```
-#### PROBOLINGGO (Router)
+**PROBOLINGGO (Router)**
 ```
 auto lo
 iface lo inet loopback
@@ -215,7 +215,7 @@ iface eth2 inet static
 address 192.168.128.1
 netmask 255.255.248.0
 ```
-#### SIDOARJO (Client)
+**SIDOARJO (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -226,7 +226,7 @@ address 192.168.160.2
 netmask 255.255.252.0
 gateway 192.168.160.1
 ```
-#### BANYUWANGI (Client)
+**BANYUWANGI (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -237,7 +237,7 @@ address 192.168.128.3
 netmask 255.255.248.0
 gateway 192.168.128.1
 ```
-#### JEMBER (Client)
+**JEMBER (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -248,7 +248,7 @@ address 192.168.128.2
 netmask 255.255.248.0
 gateway 192.168.128.1
 ```
-#### BONDOWOSO (Client)
+**BONDOWOSO (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -259,7 +259,7 @@ address 192.168.136.2
 netmask 255.255.255.128
 gateway 192.168.136.1
 ```
-#### BATU (Rouoter)
+**BATU (Rouoter)**
 ```
 auto lo
 iface lo inet loopback
@@ -285,7 +285,7 @@ iface eth3 inet static
 address 192.168.16.1
 netmask 255.255.254.0
 ```
-#### KEDIRI (Router)
+**KEDIRI (Router)**
 ```
 auto lo
 iface lo inet loopback
@@ -317,7 +317,7 @@ address 192.168.16.3
 netmask 255.255.254.0
 gateway 192.168.16.1
 ```
-#### MADIUN (Router)
+**MADIUN (Router)**
 ```
 auto lo
 iface lo inet loopback
@@ -333,7 +333,7 @@ iface eth1 inet static
 address 192.168.18.1
 netmask 255.255.255.240
 ```
-#### BOJONEGORO (Client)
+**BOJONEGORO (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -344,7 +344,7 @@ address 192.168.18.2
 netmask 255.255.255.240
 gateway 192.168.18.1
 ```
-#### NGANJUK (Client)
+**NGANJUK (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -355,7 +355,7 @@ address 192.168.20.2
 netmask 255.255.252.0
 gateway 192.168.20.1
 ```
-#### MALANG (Server)
+**MALANG (Server)**
 ```
 auto lo
 iface lo inet loopback
@@ -366,7 +366,7 @@ address 10.151.83.54
 netmask 255.255.255.252
 gateway 10.151.83.53
 ```
-#### BLITAR (Router)
+**BLITAR (Router)**
 ```
 auto lo
 iface lo inet loopback
@@ -382,7 +382,7 @@ iface eth1 inet static
 address 192.168.0.1
 netmask 255.255.252.0
 ```
-#### LUMAJANG (Client)
+**LUMAJANG (Client)**
 ```
 auto lo
 iface lo inet loopback
@@ -393,7 +393,7 @@ address 192.168.4.3
 netmask 255.255.255.0
 gateway 192.168.4.1
 ```
-#### TULUNGAGUNG (Client)
+**TULUNGAGUNG (Client)**
 ```
 auto lo
 iface lo inet loopback
