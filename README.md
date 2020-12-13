@@ -74,6 +74,7 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 
 ## CIDR (Classless Inter Domain Routing) - UML
 Metode ini dikerjakan dengan cara menggabungkan subnet-subnet paling bawah dalam topologi, hingga subnet paling atas (mendekati cloud), berikut adalah penggabunganya : 
+
 <img src="https://user-images.githubusercontent.com/61219556/102016191-49f14400-3d92-11eb-9ee4-af25f148b97e.jpg" width="500" height="auto">
 <img src="https://user-images.githubusercontent.com/61219556/102016282-ac4a4480-3d92-11eb-9f9e-7ae1032546a2.jpg" width="500" height="auto">
 <img src="https://user-images.githubusercontent.com/61219556/102016284-af453500-3d92-11eb-92c8-3d9434944225.jpg" width="500" height="auto">
