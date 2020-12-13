@@ -56,7 +56,7 @@ Untuk server **MOJOKERTO** dan **MALANG**, tidak diikutkan dalam subnet pembagia
 ```
 0.0.0.0/0 via 192.168.2.1
 ```
-**BLITAR**
+BLITAR
 ```
 0.0.0.0/0 via 192.168.1.1
 ```
